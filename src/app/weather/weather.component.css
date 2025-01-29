@@ -1,0 +1,161 @@
+/* Prevent text selection globally */
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+}
+
+/* Overall container for the weather app */
+.weather-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  padding: 20px;
+  max-width: 1200px;
+  min-height: 840px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  color: #2e6ca6;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+/* Loading and error message styling */
+.loading, .error {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.loading {
+  background-color: #e3f2fd;
+  color: #0277bd;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* Weather information for each city */
+.weather-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  transition: height 0.3s ease-in-out; /* Smooth transition when the content height changes */
+  height: auto;
+}
+
+.city-weather {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  min-height: 220px; /* Set a minimum height to prevent flickering */
+}
+
+.city-weather:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.city-weather h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.weather-icon {
+  width: 60px;
+  height: 60px;
+  margin: 10px 0;
+}
+
+.weather-description {
+  font-style: italic;
+  margin: 10px 0;
+  color: #757575;
+}
+
+.temperature {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2e6ca6;
+}
+
+.sun-times p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Unit selector and button */
+.select-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.unit-selector {
+  font-size: 1.1rem;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border 0.3s ease;
+}
+
+.unit-selector:hover {
+  border-color: #2e6ca6;
+}
+
+.get-weather-btn {
+  background-color: #2e6ca6;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-weather-btn:hover {
+  background-color: #1d4f7d;
+}
+
+.get-weather-btn:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .weather-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .city-weather {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .select-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

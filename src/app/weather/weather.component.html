@@ -1,0 +1,39 @@
+ <div class="weather-container">
+  <h1>Weather App</h1>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="weatherData.length > 0" class="weather-info">
+    <ng-container *ngFor="let cityWeather of weatherData; trackBy: trackByCity">
+      <div class="city-weather">
+        <h2>{{ cityWeather.cityName }}</h2>
+        <img 
+          [src]="'https://openweathermap.org/img/wn/' + cityWeather.weatherIcon + '.png'" 
+          alt="weather icon" 
+          class="weather-icon"
+          draggable="false"
+        >
+        <p class="weather-description">{{ cityWeather.description | capitalize }}</p>
+        <p class="temperature">
+          Temperature: {{ cityWeather.temperature }}°{{ unit === 'metric' ? 'C' : 'F' }}
+        </p>
+        <div class="sun-times">
+          <p>Sunrise: {{ cityWeather.sunrise | date:'shortTime' }}</p>
+          <p>Sunset: {{ cityWeather.sunset | date:'shortTime' }}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="select-container">
+    <select [(ngModel)]="unit" (change)="setUnit(unit)" class="unit-selector">
+      <option value="metric">Celsius (°C)</option>
+      <option value="imperial">Fahrenheit (°F)</option>
+    </select>
+  </div>
+</div>
