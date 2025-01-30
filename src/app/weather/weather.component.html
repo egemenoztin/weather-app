@@ -1,4 +1,4 @@
- <div class="weather-container">
+<div class="weather-container">
   <h1>Weather App</h1>
 
   <div *ngIf="loading" class="loading">
@@ -24,8 +24,18 @@
           Temperature: {{ cityWeather.temperature }}°{{ unit === 'metric' ? 'C' : 'F' }}
         </p>
         <div class="sun-times">
-          <p>Sunrise: {{ cityWeather.sunrise | date:'shortTime' }}</p>
-          <p>Sunset: {{ cityWeather.sunset | date:'shortTime' }}</p>
+          <ng-container [ngSwitch]="timeDisplay">
+            <ng-container *ngSwitchCase="'both'">
+              <p>🌅 Sunrise: {{ cityWeather.sunrise | date:'shortTime' }}</p>
+              <p>🌇 Sunset: {{ cityWeather.sunset | date:'shortTime' }}</p>
+            </ng-container>
+            <ng-container *ngSwitchCase="'sunrise'">
+              <p>🌅 Sunrise: {{ cityWeather.sunrise | date:'shortTime' }}</p>
+            </ng-container>
+            <ng-container *ngSwitchCase="'sunset'">
+              <p>🌇 Sunset: {{ cityWeather.sunset | date:'shortTime' }}</p>
+            </ng-container>
+          </ng-container>
         </div>
       </div>
     </ng-container>
@@ -34,6 +44,11 @@
     <select [(ngModel)]="unit" (change)="setUnit(unit)" class="unit-selector">
       <option value="metric">Celsius (°C)</option>
       <option value="imperial">Fahrenheit (°F)</option>
+    </select>
+    <select [(ngModel)]="timeDisplay" (change)="setTimeDisplay(timeDisplay)" class="time-display-selector">
+      <option value="both">Show Both Times</option>
+      <option value="sunrise">Show Sunrise Only</option>
+      <option value="sunset">Show Sunset Only</option>
     </select>
   </div>
 </div>

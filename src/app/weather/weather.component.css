@@ -1,12 +1,10 @@
-/* Prevent text selection globally */
 * {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* Overall container for the weather app */
 .weather-container {
   font-family: 'Arial', sans-serif;
   background-color: #f4f7f6;
@@ -17,9 +15,9 @@
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-/* Header */
 h1 {
   text-align: center;
   color: #2e6ca6;
@@ -27,7 +25,6 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Loading and error message styling */
 .loading, .error {
   text-align: center;
   font-size: 1.2rem;
@@ -46,13 +43,12 @@ h1 {
   color: #c62828;
 }
 
-/* Weather information for each city */
 .weather-info {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  transition: height 0.3s ease-in-out; /* Smooth transition when the content height changes */
+  transition: height 0.3s ease-in-out;
   height: auto;
 }
 
@@ -64,7 +60,7 @@ h1 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
-  min-height: 220px; /* Set a minimum height to prevent flickering */
+  min-height: 290px;
 }
 
 .city-weather:hover {
@@ -102,17 +98,20 @@ h1 {
   margin: 5px 0;
 }
 
-/* Unit selector and button */
 .select-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
+  position: absolute;
+  bottom: 1.5%;
+  left: 1.5%
 }
 
-.unit-selector {
+.unit-selector, .time-display-selector {
   font-size: 1.1rem;
   padding: 8px;
+  margin: 0 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
